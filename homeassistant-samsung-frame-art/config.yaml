@@ -24,4 +24,4 @@ schema:
   photo_filter: list(None|Aqua|ArtDeco|Ink|Wash|Pastel|Feuve)?
   matte: list(none|myshelf|modernthin|modern|modernwide|flexible|shadowbox|panoramic|triptych|mix|squares)?
   matte_color: list(black|neutral|antique|warm|polar|sand|seafoam|sage|burgandy|navy|apricot|byzantine|lavender|redorange|skyblue|turquoise)?
-image: exploramus/{arch}-addon-homeassistant-samsung-frame-art
+# image: exploramus/{arch}-addon-homeassistant-samsung-frame-art
