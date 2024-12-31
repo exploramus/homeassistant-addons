@@ -78,7 +78,7 @@ async def main():
 
     supported = await tv.supported()
     if supported:
-        logging.info('This TV is supported')
+        logging.info('This TV is supported - EXP')
 
     else:
         logging.info('This TV is not supported')
