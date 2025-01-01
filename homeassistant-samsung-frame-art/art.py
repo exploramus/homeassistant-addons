@@ -171,8 +171,8 @@ async def main():
                         logging.info('deleted from tv: {}'.format([current_content_id]))  
 
                     frame_state.Uploaded_Photos.append(selected_photo)
-                    if len(frame_state.Uploaded_Photos.) > 5:
-                        frame_state.Uploaded_Photos..pop(0)
+                    if len(frame_state.Uploaded_Photos) > 5:
+                        frame_state.Uploaded_Photos.pop(0)
                     
                     save_state_data(state_json_path,frame_state)
 
