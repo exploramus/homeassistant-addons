@@ -36,7 +36,7 @@ async def main():
     folder_path = '/media/frame'
     if args.subfolder:
         folder_path = os.path.join(folder_path, args.subfolder)
-        logging.info('Folder is: {}'.format(folder_path))
+    logging.info('Folder is: {}'.format(folder_path))
 
     # Set the path to the file containing the last used images
     uploaded_json_path = '/data/uploaded.json'
