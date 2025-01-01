@@ -28,36 +28,33 @@ def parseargs():
     
 
 
-
-# Set the path to the folder containing the images
-folder_path = '/media/frame'
-
-uploaded_json_path = '/data/uploaded.json'
-
-
-# Load the list of last 5 uploaded pictures
-if os.path.exists(uploaded_json_path):
-    with open(uploaded_json_path, 'r') as file:
-        uploaded_photos = json.load(file)
-else:
-    uploaded_photos = []
-
-# Get the list of all photos in the folder
-files = [f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f))]
-
-if len(files) > 5:
-    # Exclude the photos on the uploaded list
-    available_files = [f for f in files if f not in uploaded_photos]
-
-    # Select a random photo from the available files
-    selected_photo = random.choice(available_files)
-else:
-    selected_photo = random.choice(files)
-
-
-
 async def main():
     args = parseargs()
+
+    # Set the path to the folder containing the images
+    folder_path = '/media/frame'
+
+    uploaded_json_path = '/data/uploaded.json'
+
+
+    # Load the list of last 5 uploaded pictures
+    if os.path.exists(uploaded_json_path):
+        with open(uploaded_json_path, 'r') as file:
+            uploaded_photos = json.load(file)
+    else:
+        uploaded_photos = []
+
+    # Get the list of all photos in the folder
+    files = [f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f))]
+
+    if len(files) > 5:
+        # Exclude the photos on the uploaded list
+        available_files = [f for f in files if f not in uploaded_photos]
+
+        # Select a random photo from the available files
+        selected_photo = random.choice(available_files)
+    else:
+        selected_photo = random.choice(files)
 
 
     matte = args.matte
