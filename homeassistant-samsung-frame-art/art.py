@@ -7,7 +7,7 @@ import logging
 import argparse
 from PIL import Image, ImageOps
 
-from samsungtvws.async_artmode import SamsungTVAsyncArt
+from samsungtvws import SamsungTVAsyncArt
 from samsungtvws import exceptions
 
 class StateData:
