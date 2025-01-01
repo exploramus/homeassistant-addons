@@ -13,8 +13,6 @@ sys.path.append('../')
 from samsungtvws.async_art import SamsungTVAsyncArt
 from samsungtvws import exceptions
 
-logging.basicConfig(level=logging.INFO) #or logging.DEBUG to see messages
-
 
 def parseargs():
     # Add command line argument parsing
@@ -29,14 +27,20 @@ def parseargs():
 
 
 async def main():
+    # Set log level
+    logging.basicConfig(level=logging.INFO) #or logging.DEBUG to see messages
+
+    # Parse command line parameters
     args = parseargs()
+    logging.info('Parameters: {}'.format(args))
 
     # Set the path to the folder containing the images
     folder_path = '/media/frame'
+    logging.info('Folder is (1): {}'.format(folder_path))
     if args.subfolder:
         if args.subfolder != "":
             folder_path = os.path.join(folder_path, args.subfolder)
-    logging.info('Folder is: {}'.format(folder_path))
+    logging.info('Folder is (2): {}'.format(folder_path))
 
     # Set the path to the file containing the last used images
     uploaded_json_path = '/data/uploaded.json'
@@ -79,7 +83,7 @@ async def main():
 
     supported = await tv.supported()
     if supported:
-        logging.info('This TV is supported - EXP')
+        logging.info('This TV is supported')
 
     else:
         logging.info('This TV is not supported')
