@@ -75,11 +75,8 @@ async def main():
     else:
         matte_var = matte
 
-
-
     tv = SamsungTVAsyncArt(host=args.ip, port=8002)
     await tv.start_listening()
-    
 
     supported = await tv.supported()
     if supported:
@@ -100,9 +97,9 @@ async def main():
             logging.info('art mode is on: {}'.format(art_mode))
 
             #get current artwork
-            info = await tv.get_current()
-            # logging.info('current artwork: {}'.format(info))
-            current_content_id = info['content_id']
+            current = await tv.get_current()
+            logging.info('current artwork: {}'.format(current))
+            current_content_id = current['content_id']
 
             photos = [f for f in os.listdir(folder_path) if f.lower().endswith(('.png', '.jpg'))]
             if not photos:
@@ -116,13 +113,10 @@ async def main():
                 filename = new_filename
                 logging.info('Selected and renamed photo: {}'.format(filename))
 
-
                 image = Image.open(filename)
                 image = ImageOps.exif_transpose(image)
                 new_image = image.resize((3840, 2160))
                 new_image.save(filename)
-
-
 
                 content_id = None
                 if filename:
@@ -137,10 +131,11 @@ async def main():
                     logging.info('set artwork to {}'.format(content_id))
 
                
-                    #delete the file that was showing before
-                    
-                    await tv.delete_list([current_content_id])
-                    logging.info('deleted from tv: {}'.format([current_content_id]))  
+                    #delete the file that was showing before if uploaded through this script
+                    #checking if current artwork was uploaded through this script
+                    if current in uploaded_photos:
+                        await tv.delete_list([current_content_id])
+                        logging.info('deleted from tv: {}'.format([current_content_id]))  
 
                     uploaded_photos.append(selected_photo)
                     if len(uploaded_photos) > 5:
