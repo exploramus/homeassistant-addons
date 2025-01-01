@@ -16,11 +16,13 @@ map:
   - "media:rw"
 options:
   tv: "192.168.178.94"
+  subfolder: ""
   photo_filter: None
   matte: none
   matte_color: black
 schema:
   tv: "str?"
+  subfolder: "str?"
   photo_filter: list(None|Aqua|ArtDeco|Ink|Wash|Pastel|Feuve)?
   matte: list(none|myshelf|modernthin|modern|modernwide|flexible|shadowbox|panoramic|triptych|mix|squares)?
   matte_color: list(black|neutral|antique|warm|polar|sand|seafoam|sage|burgandy|navy|apricot|byzantine|lavender|redorange|skyblue|turquoise)?

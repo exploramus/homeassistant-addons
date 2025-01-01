@@ -2,6 +2,9 @@ configuration:
   tv:
     name: IP Adress of the Samsung The Frame
     description: Please make sure the IP adress of the Frame is static
+  subfolder:
+    name: Subfolder for selecting an image
+    description: If left blank, the main media folder will be used
   photo_filter:
     name: Photo filter to apply
     description: None will not apply any filter

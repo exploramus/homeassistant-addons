@@ -21,6 +21,7 @@ def parseargs():
     # Add command line argument parsing
     parser = argparse.ArgumentParser(description='Example async art Samsung Frame TV.')
     parser.add_argument('--ip', action="store", type=str, default=None, help='ip address of TV (default: %(default)s))')
+    parser.add_argument('--subfolder', action="store", type=str, default=None, help='subfolder to display (default: %(default)s))')
     parser.add_argument('--filter', action="store", type=str, default="none", help='photo filter to apply (default: %(default)s))')
     parser.add_argument('--matte', action="store", type=str, default="none", help='matte to apply (default: %(default)s))')
     parser.add_argument('--matte-color', action="store", type=str, default="black", help='matte color to apply (default: %(default)s))')
