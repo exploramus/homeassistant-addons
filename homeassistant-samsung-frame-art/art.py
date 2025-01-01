@@ -13,9 +13,8 @@ sys.path.append('../')
 from samsungtvws.async_art import SamsungTVAsyncArt
 from samsungtvws import exceptions
 
-
-
 logging.basicConfig(level=logging.INFO) #or logging.DEBUG to see messages
+
 
 def parseargs():
     # Add command line argument parsing
