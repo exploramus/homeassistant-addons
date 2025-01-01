@@ -7,7 +7,7 @@ import logging
 import argparse
 from PIL import Image, ImageOps
 
-from samsungtvws.async_art import SamsungTVAsyncArt
+from samsungtvws.async_artmode import SamsungTVAsyncArt
 from samsungtvws import exceptions
 
 class StateData:
@@ -18,22 +18,22 @@ class StateData:
     def to_dict(self):
         return {
             "LastContentID": self.LastContentID,
-            "Uploaded_Photos": self.Uploaded_Files
+            "Uploaded_Photos": self.Uploaded_Photos
         }
 
     @classmethod
     def from_dict(cls, data):
         return cls(
             last_content_id=data.get("LastContentID"),
-            uploaded_photos=data.get("Uploaded_Files", [])
+            uploaded_photos=data.get("Uploaded_Photos", [])
         )
 
 def load_state_data(filepath):
     if os.path.exists(filepath):
         with open(filepath, 'r') as file:
             data = json.load(file)
-            return UploadData.from_dict(data)
-    return UploadData()
+            return StateData.from_dict(data)
+    return StateData()
 
 def save_state_data(filepath, upload_data):
     with open(filepath, 'w') as file:
