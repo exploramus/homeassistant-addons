@@ -35,7 +35,8 @@ async def main():
     # Set the path to the folder containing the images
     folder_path = '/media/frame'
     if args.subfolder:
-        folder_path = os.path.join(folder_path, args.subfolder)
+        if args.subfolder != "":
+            folder_path = os.path.join(folder_path, args.subfolder)
     logging.info('Folder is: {}'.format(folder_path))
 
     # Set the path to the file containing the last used images
