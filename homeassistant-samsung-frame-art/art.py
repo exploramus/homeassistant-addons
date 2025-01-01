@@ -34,9 +34,12 @@ async def main():
 
     # Set the path to the folder containing the images
     folder_path = '/media/frame'
+    if args.subfolder:
+        folder_path = os.path.join(folder_path, args.subfolder)
+        logging.info('Folder is: {}'.format(folder_path))
 
+    # Set the path to the file containing the last used images
     uploaded_json_path = '/data/uploaded.json'
-
 
     # Load the list of last 5 uploaded pictures
     if os.path.exists(uploaded_json_path):
